@@ -1,39 +1,202 @@
-@@
--  <header>
--    <img src="love.png" alt="Logo I LOVE PC Token">
--    <h1>I LOVE PC (LOVE)</h1>
--    <p class="description">🚀 Token criado para quem ama computadores. Com LOVE, podemos tudo!</p>
--
--    <!-- Frase motivacional + imagem -->
--    <div class="motivacional">
--      <img src="quantum-pc.png" alt="Computador Quântico">
--      <span>💻 “O computador é mais do que uma máquina: é uma ferramenta capaz de transformar ideias em realidade, conectar pessoas ao redor do mundo e ampliar infinitamente o poder da mente humana.”</span>
--    </div>
--  </header>
-+  <header>
-+    <img class="logo" src="LOVE.png" alt="Logo I LOVE PC Token" />
-+    <h1>I LOVE PC (LOVE)</h1>
-+    <p class="description">🚀 Token created for computer lovers. With LOVE, podemos tudo!</p>
-+
-+    <!-- FRASE MOTIVACIONAL com imagem remota do supercomputador -->
-+    <div class="motivacional" aria-live="polite">
-+      <!-- imagem remota (Wikimedia Commons) -->
-+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Frontier_supercomputer_%2824%29.jpg"
-+           alt="Supercomputador Frontier - Oak Ridge" loading="lazy" decoding="async">
-+      <div class="texto">
-+        <span class="grad">💻 “The computer is more than a machine: it is a tool capable of transforming ideas into reality, connecting people around the world and infinitely expanding the power of the human mind..”</span>
-+        <small class="img-credit">Imagem: Oak Ridge National Laboratory — licença CC BY 2.0.</small>
-+      </div>
-+    </div>
-+  </header>
-@@
--  <footer>
--    &copy; 2025 I LOVE PC. All rights reserved.
--  </footer>
-+  <footer>
-+    <div>&copy; 2025 I LOVE PC. All rights reserved.</div>
-+    <div style="margin-top:6px;font-size:0.85rem;color:#93a6af;">
-+      Créditos da imagem: Oak Ridge National Laboratory — 
-+      <a href="https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(24).jpg" target="_blank" rel="noopener noreferrer" style="color:#bfefff;">Commons / CC BY 2.0</a>.
-+    </div>
-+  </footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I LOVE PC - RML Token</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+    }
+
+    header img.logo {
+      max-width: 180px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin: 10px 0;
+      color: #f94c10;
+    }
+
+    p.description {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .motivacional {
+      margin: 30px auto;
+      max-width: 850px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .motivacional img {
+      max-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .motivacional .texto {
+      flex: 1;
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    .motivacional .grad {
+      background: linear-gradient(90deg, #f94c10, #ffdd00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #f94c10; }
+      to   { text-shadow: 0 0 20px #ffdd00; }
+    }
+
+    .token-info {
+      background-color: #222;
+      padding: 30px 20px;
+      margin: 30px auto;
+      max-width: 700px;
+      border-radius: 12px;
+      border: 1px solid #444;
+      text-align: left;
+    }
+
+    .token-info p {
+      margin: 12px 0;
+      font-size: 1.05em;
+    }
+
+    .token-info strong {
+      color: #f94c10;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: #f94c10;
+      color: white;
+      padding: 12px 28px;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #d13a0c;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #111;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #bfefff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .token-info {
+        padding: 20px 15px;
+      }
+
+      a.button {
+        width: 90%;
+        display: block;
+        margin: 10px auto;
+      }
+
+      .motivacional {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="love.png" alt="I LOVE PC Token Logo" />
+    <h1>I LOVE PC (LOVE)</h1>
+    <p class="description">🚀 A token created for those who love computers. With LOVE, anything is possible!</p>
+
+    <!-- Motivational phrase with supercomputer image -->
+    <div class="motivacional" aria-live="polite">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Frontier_supercomputer_%2824%29.jpg"
+           alt="Frontier Supercomputer - Oak Ridge" loading="lazy" decoding="async">
+      <div class="texto">
+        <span class="grad">💻 “The computer is more than just a machine: it’s a tool capable of turning ideas into reality, connecting people around the world, and infinitely expanding the power of the human mind.”</span>
+        <small class="img-credit">Image: Oak Ridge National Laboratory — CC BY 2.0.</small>
+      </div>
+    </div>
+  </header>
+
+  <div class="token-info">
+    <p><strong>🔗 Token Symbol:</strong> LOVE</p>
+    <p><strong>🌐 Network:</strong> Solana</p>
+    <p><strong>📜 Token Contract:</strong><br>
+      <code>FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
+    </p>
+
+    <div class="buttons">
+      <a class="button" href="https://www.smapocke.app/meme-pad/FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP" target="_blank">🛒 Buy on Smapocke</a>
+      <a class="button" href="https://x.com/Patrick97170532" target="_blank">🐦 Twitter / X</a>
+    </div>
+  </div>
+
+  <footer>
+    <div>&copy; 2025 I LOVE PC. All rights reserved.</div>
+    <div style="margin-top:6px;font-size:0.85rem;color:#93a6af;">
+      Image credit: Oak Ridge National Laboratory — 
+      <a href="https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(24).jpg" target="_blank" rel="noopener noreferrer">Commons / CC BY 2.0</a>.
+    </div>
+  </footer>
+
+</body>
+</html>
