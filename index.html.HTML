@@ -100,25 +100,37 @@
       color: #f94c10;
     }
 
+    /* Redes sociais - botões destacados */
     .buttons {
-      margin-top: 20px;
+      margin-top: 25px;
       text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
     }
 
     a.button {
-      display: inline-block;
-      background-color: #f94c10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f94c10, #ff7300);
       color: white;
-      padding: 12px 28px;
-      margin: 10px;
+      padding: 14px 32px;
+      margin: 5px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s;
+      border-radius: 12px;
+      font-size: 1.1em;
+      box-shadow: 0 0 12px rgba(249, 76, 16, 0.6);
+      transition: all 0.3s ease;
     }
 
     a.button:hover {
-      background-color: #d13a0c;
+      transform: scale(1.08);
+      background: linear-gradient(135deg, #ff7300, #ffd000);
+      box-shadow: 0 0 20px rgba(255, 208, 0, 0.9);
     }
 
     footer {
@@ -162,7 +174,9 @@
 <body>
 
   <header>
+    <!-- Novo logo (substitua pelo link do seu GitHub RAW se preferir) -->
     <img class="logo" src="love.png" alt="I LOVE PC Token Logo" />
+    
     <h1>I LOVE PC (LOVE)</h1>
     <p class="description">🚀 A token created for those who love computers. With LOVE, anything is possible!</p>
 
@@ -177,13 +191,17 @@
     </div>
   </header>
 
-  <div class="buttons">
-  <a class="button" href="https://www.smapocke.app/meme-pad/FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP" target="_blank">🛒 Buy on Smapocke</a>
-  <a class="button" href="https://x.com/Patrick97170532" target="_blank">🐦 Twitter / X</a>
-  <a class="button" href="https://t.me/+JxMxH--LI8MwNGRh" target="_blank">📱 Telegram</a>
-</div> class="buttons">
+  <div class="token-info">
+    <p><strong>🔗 Token Symbol:</strong> LOVE</p>
+    <p><strong>🌐 Network:</strong> Solana</p>
+    <p><strong>📜 Token Contract:</strong><br>
+      <code>FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
+    </p>
+
+    <div class="buttons">
       <a class="button" href="https://www.smapocke.app/meme-pad/FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP" target="_blank">🛒 Buy on Smapocke</a>
       <a class="button" href="https://x.com/Patrick97170532" target="_blank">🐦 Twitter / X</a>
+      <a class="button" href="https://t.me/+JxMxH--LI8MwNGRh" target="_blank">📱 Telegram</a>
     </div>
   </div>
 
@@ -197,4 +215,3 @@
 
 </body>
 </html>
-
