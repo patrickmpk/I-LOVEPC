@@ -239,9 +239,36 @@
   <div class="token-info">
     <p><strong>🔗 Token Symbol:</strong> LOVE</p>
     <p><strong>🌐 Network:</strong> Solana</p>
-    <p><strong>📜 Token Contract:</strong><br>
-  <code class="highlight">FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
+    <p><p><strong>📜 Token Contract:</strong><br>
+  <code class="highlight-animated">FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
 </p>
+
+<style>
+  code.highlight-animated {
+    display: inline-block;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2em;
+    letter-spacing: 1.5px;
+    background: linear-gradient(90deg, #ff7300, #ffd000, #ff7300);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 6px 10px;
+    border-radius: 8px;
+    animation: shine 3s linear infinite, glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 8px rgba(255, 115, 0, 0.7), 0 0 15px rgba(255, 208, 0, 0.5); }
+    to   { text-shadow: 0 0 15px rgba(255, 208, 0, 1), 0 0 30px rgba(255, 115, 0, 0.9); }
+  }
+</style>
 
 <style>
   code.highlight {
