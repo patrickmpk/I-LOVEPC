@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I LOVE PC - Love Token</title>
   <style>
+       <link rel="icon" type="image/png" href="love.png">
     * {
       box-sizing: border-box;
     }
@@ -16,43 +17,6 @@
       background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
       color: #fff;
       text-align: center;
-    }
-
-    /* 🔹 Barra de preços (ticker) */
-    .ticker-wrapper {
-      width: 100%;
-      overflow: hidden;
-      background: #111;
-      border-bottom: 2px solid #f94c10;
-      color: #fff;
-      font-size: 1em;
-      padding: 8px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
-
-    .ticker {
-      display: inline-block;
-      white-space: nowrap;
-      padding-left: 100%;
-      animation: ticker 20s linear infinite;
-    }
-
-    .ticker span {
-      margin: 0 30px;
-      color: #ff7300;
-      font-weight: bold;
-    }
-
-    @keyframes ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    body {
-      padding-top: 50px; /* evita sobrepor header */
     }
 
     header {
@@ -137,7 +101,7 @@
       color: #f94c10;
     }
 
-    /* Botões sociais */
+    /* Redes sociais - botões destacados */
     .buttons {
       margin-top: 25px;
       text-align: center;
@@ -210,22 +174,14 @@
 </head>
 <body>
 
-  <!-- 🔹 Barra de preços -->
-  <div class="ticker-wrapper">
-    <div class="ticker">
-      <span>BTC: <span id="btc-price">--</span></span>
-      <span>ETH: <span id="eth-price">--</span></span>
-      <span>SOL: <span id="sol-price">--</span></span>
-      <span>PKM: <span id="pkm-price">--</span></span>
-      <span>HOLY: <span id="holy-price">--</span></span>
-    </div>
-  </div>
-
   <header>
+    <!-- Novo logo (substitua pelo link do seu GitHub RAW se preferir) -->
     <img class="logo" src="love.png" alt="I LOVE PC Token Logo" />
+    
     <h1>I LOVE PC (LOVE)</h1>
     <p class="description">🚀 A token created for those who love computers. With LOVE, anything is possible!</p>
 
+    <!-- Motivational phrase with supercomputer image -->
     <div class="motivacional" aria-live="polite">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Frontier_supercomputer_%2824%29.jpg"
            alt="Frontier Supercomputer - Oak Ridge" loading="lazy" decoding="async">
@@ -239,59 +195,16 @@
   <div class="token-info">
     <p><strong>🔗 Token Symbol:</strong> LOVE</p>
     <p><strong>🌐 Network:</strong> Solana</p>
-    <p><p><strong>📜 Token Contract:</strong><br>
-  <code class="highlight-animated">FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
-</p>
-
-<style>
-  code.highlight-animated {
-    display: inline-block;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 1.2em;
-    letter-spacing: 1.5px;
-    background: linear-gradient(90deg, #ff7300, #ffd000, #ff7300);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 6px 10px;
-    border-radius: 8px;
-    animation: shine 3s linear infinite, glow 1.5s ease-in-out infinite alternate;
-  }
-
-  @keyframes shine {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-  }
-
-  @keyframes glow {
-    from { text-shadow: 0 0 8px rgba(255, 115, 0, 0.7), 0 0 15px rgba(255, 208, 0, 0.5); }
-    to   { text-shadow: 0 0 15px rgba(255, 208, 0, 1), 0 0 30px rgba(255, 115, 0, 0.9); }
-  }
-</style>
-
-<style>
-  code.highlight {
-    display: inline-block;
-    font-family: monospace;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ff7300, #ffd000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 8px rgba(255, 115, 0, 0.8);
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    padding: 4px 8px;
-    border-radius: 6px;
-  }
-</style></p>
+    <p><strong>📜 Token Contract:</strong><br>
+      <code>FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP</code>
+    </p>
 
     <div class="buttons">
       <a class="button" href="https://www.smapocke.app/meme-pad/FndLortC7QBc9A55yaaF7Yf8JLtU4beRAR5YdV8X68SP" target="_blank">🛒 Buy on Smapocke</a>
       <a class="button" href="https://x.com/Patrick97170532" target="_blank">🐦 Twitter / X</a>
       <a class="button" href="https://t.me/+JxMxH--LI8MwNGRh" target="_blank">📱 Telegram</a>
       <a class="button" href="whitepaper/index.html">📄 Whitepaper</a>
-    </div>
+  </div>
   </div>
 
   <footer>
@@ -301,49 +214,6 @@
       <a href="https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(24).jpg" target="_blank" rel="noopener noreferrer">Commons / CC BY 2.0</a>.
     </div>
   </footer>
-
-  <!-- 🔹 Script de preços -->
-  <script>
-  async function fetchCoingeckoPrices() {
-    const ids = "bitcoin,ethereum,solana";
-    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`;
-    const res = await fetch(url);
-    return res.json();
-  }
-
-  async function fetchDexScreenerPrice(mint) {
-    const url = `https://api.dexscreener.com/latest/dex/tokens/${mint}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return data?.pairs?.[0]?.priceUsd || null;
-  }
-
-  async function updatePrices() {
-    try {
-      const cg = await fetchCoingeckoPrices();
-      document.getElementById("btc-price").textContent = `$${cg.bitcoin.usd}`;
-      document.getElementById("eth-price").textContent = `$${cg.ethereum.usd}`;
-      document.getElementById("sol-price").textContent = `$${cg.solana.usd}`;
-
-      const pkmMint = "6LH9NDBYUf7thDx8sMZppZpxAsdXtsQ9VN37gKMpZRSp";
-      const holyMint = "BSXFKLVsyrYckSF4SGXu9DRfMb3Fos7tRF9zMXgRCUsP";
-
-      const [pkm, holy] = await Promise.all([
-        fetchDexScreenerPrice(pkmMint),
-        fetchDexScreenerPrice(holyMint)
-      ]);
-
-      document.getElementById("pkm-price").textContent = pkm ? `$${parseFloat(pkm).toFixed(6)}` : "N/A";
-      document.getElementById("holy-price").textContent = holy ? `$${parseFloat(holy).toFixed(6)}` : "N/A";
-
-    } catch (err) {
-      console.error("Error updating prices:", err);
-    }
-  }
-
-  updatePrices();
-  setInterval(updatePrices, 60 * 1000);
-  </script>
 
 </body>
 </html>
