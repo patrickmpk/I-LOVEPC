@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I LOVE PC - Love Token</title>
+  <link rel="icon" type="image/png" href="love.png">
   <style>
-        <link rel="icon" type="image/png" href="love.png">
-
-    * {
       box-sizing: border-box;
     }
 
@@ -207,6 +205,108 @@
       .motivacional {
         flex-direction: column;
       }
+
+      .chart {
+        height: 120px;
+      }
+
+      .bar {
+        width: 35px;
+      }
+
+      .bar span {
+        font-size: 0.6em;
+        bottom: -35px;
+      }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Price visualization */
+    .price-visualization {
+      background-color: #222;
+      padding: 30px 20px 60px;
+      margin: 30px auto;
+      max-width: 700px;
+      border-radius: 12px;
+      border: 1px solid #444;
+      text-align: center;
+    }
+
+    .price-visualization h2 {
+      color: #f94c10;
+      margin-bottom: 20px;
+    }
+
+    .chart {
+      display: flex;
+      justify-content: space-around;
+      align-items: end;
+      height: 200px;
+      margin-top: 20px;
+    }
+
+    .bar {
+      width: 50px;
+      background: linear-gradient(135deg, #f94c10, #ff7300);
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      transition: height 1s ease;
+      min-height: 10px;
+    }
+
+    .bar span {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 0.7em;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    /* Airdrop background effects */
+    .airdrop-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .falling {
+      position: absolute;
+      font-size: 2em;
+      animation: fall linear infinite;
+      opacity: 0.6;
+      color: #f94c10;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -220,10 +320,14 @@
       <span>SOL: <span id="sol-price">--</span></span>
       <span>PKM: <span id="pkm-price">--</span></span>
       <span>HOLY: <span id="holy-price">--</span></span>
+      <span>SP: <span id="sp-price">--</span></span>
     </div>
   </div>
 
-  <header>
+  <!-- Airdrop background -->
+  <div class="airdrop-bg" id="airdrop-bg"></div>
+
+  <header class="fade-in">
     <img class="logo" src="love.png" alt="I LOVE PC Token Logo" />
     <h1>I LOVE PC (LOVE)</h1>
     <p class="description">🚀 A token created for those who love computers. With LOVE, anything is possible!</p>
@@ -232,13 +336,13 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Frontier_supercomputer_%2824%29.jpg"
            alt="Frontier Supercomputer - Oak Ridge" loading="lazy" decoding="async">
       <div class="texto">
-        <span class="grad">💻 “The computer is more than just a machine: it’s a tool capable of turning ideas into reality, connecting people around the world, and infinitely expanding the power of the human mind.”</span>
+        <span class="grad">💻 "The computer is more than just a machine: it's a tool capable of turning ideas into reality, connecting people around the world, and infinitely expanding the power of the human mind."</span>
         <small class="img-credit">Image: Oak Ridge National Laboratory — CC BY 2.0.</small>
       </div>
     </div>
   </header>
 
-  <div class="token-info">
+  <div class="token-info fade-in">
     <p><strong>🔗 Token Symbol:</strong> LOVE</p>
     <p><strong>🌐 Network:</strong> Solana</p>
     <p><p><strong>📜 Token Contract:</strong><br>
@@ -270,22 +374,6 @@
     from { text-shadow: 0 0 8px rgba(255, 115, 0, 0.7), 0 0 15px rgba(255, 208, 0, 0.5); }
     to   { text-shadow: 0 0 15px rgba(255, 208, 0, 1), 0 0 30px rgba(255, 115, 0, 0.9); }
   }
-</style>
-
-<style>
-  code.highlight {
-    display: inline-block;
-    font-family: monospace;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ff7300, #ffd000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 8px rgba(255, 115, 0, 0.8);
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    padding: 4px 8px;
-    border-radius: 6px;
-  }
 </style></p>
 
     <div class="buttons">
@@ -296,7 +384,12 @@
     </div>
   </div>
 
-  <footer>
+  <div class="price-visualization fade-in">
+    <h2>Visualização de Preços</h2>
+    <div class="chart" id="chart"></div>
+  </div>
+
+  <footer class="fade-in">
     <div>&copy; 2025 I LOVE PC. All rights reserved.</div>
     <div style="margin-top:6px;font-size:0.85rem;color:#93a6af;">
       Image credit: Oak Ridge National Laboratory — 
@@ -306,37 +399,71 @@
 
   <!-- 🔹 Script de preços -->
   <script>
-  async function fetchCoingeckoPrices() {
+  async function fetchCoingeckoData() {
     const ids = "bitcoin,ethereum,solana";
-    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`;
+    const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${ids}&vs_currency=usd&order=market_cap_desc&per_page=3&page=1&sparkline=false`;
     const res = await fetch(url);
     return res.json();
   }
 
-  async function fetchDexScreenerPrice(mint) {
+  async function fetchDexScreenerData(mint) {
     const url = `https://api.dexscreener.com/latest/dex/tokens/${mint}`;
     const res = await fetch(url);
     const data = await res.json();
-    return data?.pairs?.[0]?.priceUsd || null;
+    const pair = data?.pairs?.[0];
+    return {
+      price: pair?.priceUsd || null,
+      liquidity: pair?.liquidity?.usd || 0,
+      volume: pair?.volume?.h24 || 0
+    };
   }
 
   async function updatePrices() {
     try {
-      const cg = await fetchCoingeckoPrices();
-      document.getElementById("btc-price").textContent = `$${cg.bitcoin.usd}`;
-      document.getElementById("eth-price").textContent = `$${cg.ethereum.usd}`;
-      document.getElementById("sol-price").textContent = `$${cg.solana.usd}`;
+      const majorData = await fetchCoingeckoData();
+      const btc = { symbol: 'BTC', price: majorData[0].current_price, liquidity: majorData[0].market_cap, volume: majorData[0].total_volume };
+      const eth = { symbol: 'ETH', price: majorData[1].current_price, liquidity: majorData[1].market_cap, volume: majorData[1].total_volume };
+      const sol = { symbol: 'SOL', price: majorData[2].current_price, liquidity: majorData[2].market_cap, volume: majorData[2].total_volume };
 
       const pkmMint = "6LH9NDBYUf7thDx8sMZppZpxAsdXtsQ9VN37gKMpZRSp";
       const holyMint = "BSXFKLVsyrYckSF4SGXu9DRfMb3Fos7tRF9zMXgRCUsP";
+      const spMint = "6gdDALVM7FrTnXTXo17PpHnLtUdnaAtokCBzPUZKA2rx";
 
-      const [pkm, holy] = await Promise.all([
-        fetchDexScreenerPrice(pkmMint),
-        fetchDexScreenerPrice(holyMint)
+      const [pkmData, holyData, spData] = await Promise.all([
+        fetchDexScreenerData(pkmMint),
+        fetchDexScreenerData(holyMint),
+        fetchDexScreenerData(spMint)
       ]);
 
-      document.getElementById("pkm-price").textContent = pkm ? `$${parseFloat(pkm).toFixed(6)}` : "N/A";
-      document.getElementById("holy-price").textContent = holy ? `$${parseFloat(holy).toFixed(6)}` : "N/A";
+      const pkm = { symbol: 'PKM', ...pkmData };
+      const holy = { symbol: 'HOLY', ...holyData };
+      const sp = { symbol: 'SP', ...spData };
+
+      // Update ticker prices
+      document.getElementById("btc-price").textContent = `$${btc.price}`;
+      document.getElementById("eth-price").textContent = `$${eth.price}`;
+      document.getElementById("sol-price").textContent = `$${sol.price}`;
+      document.getElementById("pkm-price").textContent = pkm.price ? `$${parseFloat(pkm.price).toFixed(6)}` : "N/A";
+      document.getElementById("holy-price").textContent = holy.price ? `$${parseFloat(holy.price).toFixed(6)}` : "N/A";
+      document.getElementById("sp-price").textContent = sp.price ? `$${parseFloat(sp.price).toFixed(6)}` : "N/A";
+
+      // Prepare tokens for chart
+      const allTokens = [btc, eth, sol, pkm, holy, sp];
+      allTokens.sort((a, b) => b.volume - a.volume); // Rank by volume desc
+
+      // Update chart
+      const chart = document.getElementById('chart');
+      chart.innerHTML = ''; // Clear existing bars
+      const maxVolume = Math.max(...allTokens.map(t => t.volume));
+      allTokens.forEach((token) => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = maxVolume > 0 ? (token.volume / maxVolume) * 180 + 'px' : '10px';
+        const span = document.createElement('span');
+        span.innerHTML = `${token.symbol}<br>$${token.volume.toLocaleString()}`;
+        bar.appendChild(span);
+        chart.appendChild(bar);
+      });
 
     } catch (err) {
       console.error("Error updating prices:", err);
@@ -345,6 +472,24 @@
 
   updatePrices();
   setInterval(updatePrices, 60 * 1000);
+
+  // Create falling airdrop elements
+  function createFallingElements() {
+    const bg = document.getElementById('airdrop-bg');
+    const emojis = ['💖', '🪙', '🚀', '💻', '❤️'];
+    for (let i = 0; i < 30; i++) {
+      const el = document.createElement('div');
+      el.className = 'falling';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + '%';
+      el.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      el.style.animationDelay = Math.random() * 10 + 's';
+      el.style.fontSize = (Math.random() * 1.5 + 1.5) + 'em';
+      bg.appendChild(el);
+    }
+  }
+
+  createFallingElements();
   </script>
 
 </body>
